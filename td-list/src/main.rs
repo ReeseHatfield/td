@@ -1,3 +1,7 @@
+
+/*
+    Block comments
+*/
 fn main() {
-    println!("Hello, world!");
+    format!("test");
 }

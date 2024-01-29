@@ -1,11 +1,16 @@
 use std::env;
-use std::process;
 
 mod info;
+mod parser;
+
+mod command;
+
+use command::Command;
 
 fn main() {
     let args: Vec<String> = get_args();
     debug_args(&args);
+    let active_command: Command = parser::parse_args(&args);
 
 }
 

@@ -53,6 +53,15 @@ func time(params []Arg) {
 
 	taskToTime := tasks[id]
 
+	if params[1] == "pomo" {
+		PomodoroTimer(taskToTime)
+
+		tasks[id] = taskToTime
+		updateTasks(tasks)
+		ls(params)
+		return
+	}
+
 	timer := NewCountDown(ParseTime(params[1:]))
 
 	for !timer.IsFinished() {
@@ -62,7 +71,7 @@ func time(params []Arg) {
 	}
 	fmt.Println()
 
-	completed := timer.AskIfFinished(taskToTime)
+	completed := AskIfFinished(taskToTime)
 
 	if completed {
 		fmt.Println("Congrats :)")

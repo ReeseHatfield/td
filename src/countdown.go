@@ -75,7 +75,7 @@ func (cd *CountDown) Stop() {
 	cd.isFinished = true
 }
 
-func (cd *CountDown) AskIfFinished(t task) bool {
+func AskIfFinished(t task) bool {
 
 	fmt.Println("Timer expired!")
 	fmt.Printf("Did you finish the task (%s) [y/n] ", t.Description)

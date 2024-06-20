@@ -16,6 +16,7 @@ var cmdTable = map[Arg]func([]Arg){
 	"rm":     rm,
 	"rm-all": rmAll,
 	"help":   help,
+	"time":   time,
 }
 
 // Execute List of Command line args as a td command
@@ -37,6 +38,43 @@ func isValidAction(action Arg) bool {
 	_, ok := cmdTable[action]
 
 	return ok
+}
+
+func time(params []Arg) {
+
+	// [ID] [TIME]
+	tasks = loadTasks()
+
+	id, err := strconv.Atoi(string(params[0]))
+
+	if err != nil {
+		fmt.Println("Could not convert string to id")
+	}
+
+	taskToTime := tasks[id]
+
+	timer := NewCountDown(ParseTime(params[1:]))
+
+	for !timer.IsFinished() {
+		timer.WaitForSeconds(1)
+
+		fmt.Printf("\r%s\033[K", timer.String())
+	}
+	fmt.Println()
+
+	completed := timer.AskIfFinished(taskToTime)
+
+	if completed {
+		fmt.Println("Congrats :)")
+		taskToTime.IsChecked = true
+	} else {
+		fmt.Println("Thats okay, perhaps try again with more time")
+	}
+
+	tasks[id] = taskToTime
+	updateTasks(tasks)
+	ls(params)
+
 }
 
 // Adds a td item to the list, with description of params

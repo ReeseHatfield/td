@@ -36,7 +36,8 @@ func updateTasks(newTasks []task) {
 		fmt.Println("Error: could not update tasks")
 	}
 
-	for _, task := range newTasks {
+	for i, task := range newTasks {
+		task.Id = i
 		saveTask(&task)
 	}
 }

@@ -1,6 +1,8 @@
 # td 
 Easy to use, open source, command line to-do list
 
+![td ls example](./ex.png)
+
 ## Usage
 
 For usage guide, see [Docs](src/Docs.md)

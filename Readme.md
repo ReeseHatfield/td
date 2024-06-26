@@ -1,4 +1,4 @@
-![image](https://github.com/ReeseHatfield/td/assets/89809693/c052038f-378b-4245-b9a9-bdaf96b77b01)# td 
+# td 
 Easy to use, open source, command line productivity tool
 
 ![td ls example](./ex.png)

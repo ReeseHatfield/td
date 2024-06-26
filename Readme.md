@@ -1,5 +1,5 @@
 # td 
-Easy to use, open source, command line to-do list
+Easy to use, open source, command line productivity tool
 
 ![td ls example](./ex.png)
 
